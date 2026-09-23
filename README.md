@@ -1,41 +1,26 @@
-# Portafolio de Migdalia
+# Portafolio de Migdalia Girón
 
-Sitio profesional en español, con HTML, CSS y JavaScript separados. Las fuentes, los iconos y los recursos visuales se incluyen localmente.
+Página creada únicamente con **HTML, CSS y JavaScript nativo**, en archivos separados. No requiere instalaciones, Node.js, npm, frameworks, compilación ni un servidor.
 
-## Abrir el sitio
+## Cómo abrirla
 
-Abre `index.html` en tu navegador. No requiere instalación ni conexión a un CDN.
+Haz doble clic en `index.html`. Mantén las carpetas `css`, `js` y `assets` junto a ese archivo. También puedes copiar estos archivos directamente a cualquier alojamiento de páginas estáticas.
 
-Para una vista previa local mediante HTTP, con Node.js 20 o superior:
+## Archivos
 
-```sh
-npm run dev
-```
+- `index.html`: contenido, secciones, iconos SVG integrados y enlaces.
+- `css/styles.css`: colores, tipografías, diseño para móviles y animaciones.
+- `js/main.js`: pantalla de carga, menú, animaciones, trayectoria desplegable y contacto.
+- `assets/`: fotografía, fuentes locales, licencias y CV descargable.
 
-Abre la dirección que aparece en la terminal (por defecto, `http://127.0.0.1:4173/`). Para cambiar el puerto: `npm run dev -- --port 4174`.
-
-## Archivos principales
-
-- `index.html`: contenido, secciones, metadatos y enlaces de contacto.
-- `css/styles.css`: colores, tipografía, diseño adaptable y animaciones.
-- `js/main.js`: carga inicial, menú e interacciones.
-- `assets/`: fotografías, CV, fuentes e iconos locales.
-- `scripts/`: servidor de desarrollo y preparación del sitio para alojamiento.
-
-El CV descargable en `assets/docs/CV-Migdalia-Giron.pdf` es una versión seleccionada de dos páginas, preparada a partir del documento de referencia.
+El sitio incluye todos sus recursos y puede abrirse sin conexión. Para utilizar correo, teléfono o visitar el blog se necesita la aplicación o conexión correspondiente.
 
 ## Personalización
 
-Edita los textos y los enlaces de contacto en `index.html`, la apariencia en `css/styles.css` y el comportamiento en `js/main.js`. Conserva las rutas relativas para poder abrir el sitio directamente desde una carpeta.
+Cambia textos y datos de contacto en `index.html`, los colores y estilos en `css/styles.css`, y las interacciones en `js/main.js`. Conserva las rutas relativas de los recursos.
 
-Los enlaces de correo y teléfono abren la aplicación correspondiente del visitante. El formulario de contacto prepara un mensaje mediante `mailto:` y lo abre en la aplicación de correo; el visitante lo revisa y lo envía desde allí. El sitio no envía ni almacena mensajes por su cuenta.
+El formulario prepara un mensaje en la aplicación de correo del visitante; el visitante lo revisa y lo envía desde allí. No hay un servidor que envíe o almacene mensajes.
 
-## Verificación y alojamiento
+Los iconos SVG proceden de Lucide y están integrados directamente en el HTML: no se carga ninguna librería. Su licencia está en `assets/vendor/lucide-LICENSE.txt`. Las licencias de las fuentes están en `assets/fonts/`.
 
-```sh
-npm run check
-```
-
-Comprueba la sintaxis de JavaScript, valida las referencias locales del HTML y regenera `dist/client` con el sitio estático, retirando archivos de compilaciones anteriores. Para cualquier alojamiento estático, publica el contenido de esa carpeta. La compilación también prepara `dist/server/index.js` y los metadatos requeridos por Sites.
-
-Las licencias de Lucide (versión 0.468.0), Manrope y Cormorant Garamond están junto a sus archivos en `assets/vendor` y `assets/fonts`.
+El botón flotante de WhatsApp abre una conversación con el número `+502 3748 3258` y prepara un mensaje de presentación para que el visitante lo revise y lo envíe. El enlace y el mensaje se pueden editar en `index.html`, en el parámetro `text` de la dirección de WhatsApp. El icono local procede de Bootstrap Icons; su licencia está en `assets/vendor/bootstrap-icons-LICENSE.txt`.

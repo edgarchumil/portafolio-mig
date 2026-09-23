@@ -374,6 +374,15 @@ html:not(.js) #experience-toggle,html:not(.js) [data-open-contact],html:not(.js)
 @media(max-width:480px){.expertise-grid{grid-template-columns:1fr}.expertise-card{padding:27px}.expertise-card p{font-size:13px;min-height:0;line-height:1.85}.expertise-card h3{font-size:18px;min-height:0}.card-tag{font-size:8px}.card-top{margin-bottom:24px}.card-top>svg{width:28px;height:28px}.card-top>span{font-size:10px}}
 @media(min-width:681px) and (max-width:900px){.hero h1{font-size:clamp(49px,6.7vw,61px)}}
 @media(max-width:680px){.hero h1{font-size:clamp(43px,calc((100vw - 40px) / 6.67),72px)}}
+/* Contacto directo por WhatsApp; separado del botón para volver al inicio. */
+.whatsapp-button{position:fixed;right:calc(23px + env(safe-area-inset-right,0px));bottom:calc(23px + env(safe-area-inset-bottom,0px));z-index:30;display:grid;place-items:center;width:56px;height:56px;border:2px solid var(--white);border-radius:50%;background:#128c4a;color:#fff;box-shadow:0 6px 24px #163f3533;transition:background .25s,transform .25s var(--ease),box-shadow .25s}
+.whatsapp-button>img{width:30px;height:30px;filter:brightness(0) invert(1)}
+.whatsapp-button:hover,.whatsapp-button:focus-visible{background:#0d703b;transform:translateY(-3px);box-shadow:0 9px 28px #163f3540}
+.whatsapp-button:focus-visible{outline:3px solid var(--terra);outline-offset:4px}
+.whatsapp-label{position:absolute;right:calc(100% + 12px);top:50%;padding:9px 13px;transform:translate(5px,-50%);border-radius:4px;background:var(--forest);color:var(--white);font-size:11px;font-weight:600;line-height:1.5;white-space:nowrap;opacity:0;visibility:hidden;pointer-events:none;box-shadow:0 4px 18px #163f351a;transition:opacity .2s,visibility .2s,transform .2s}
+.whatsapp-button:hover .whatsapp-label,.whatsapp-button:focus-visible .whatsapp-label{opacity:1;visibility:visible;transform:translate(0,-50%)}
+.back-to-top{right:calc(30px + env(safe-area-inset-right,0px));bottom:calc(91px + env(safe-area-inset-bottom,0px))}
+@media(max-width:680px){.whatsapp-button{right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));width:52px;height:52px}.whatsapp-button>img{width:28px;height:28px}.back-to-top{right:calc(21px + env(safe-area-inset-right,0px));bottom:calc(78px + env(safe-area-inset-bottom,0px))}}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important}
@@ -381,6 +390,7 @@ html:not(.js) #experience-toggle,html:not(.js) [data-open-contact],html:not(.js)
   .portrait-composition{transform:none!important}.experience-badge{animation:none}.js .site-loader{animation:none}
 }
 @media print{
+  .whatsapp-button{display:none!important}
   .js.reveal-ready [data-reveal]{opacity:1;transform:none}
   .site-header,.site-loader,.hero-actions,.scroll-cue,.back-to-top,.contact-dialog,.contact-copy .button,.icon-button,.experience-toggle,#scroll-progress{display:none!important}
   body{background:#fff;color:#111;font-size:11pt}.container{width:100%}.section{padding:25px 0}h1,h2,h3{break-after:avoid}.hero{padding-top:0}.hero-grid{min-height:0}.hero h1{font-size:48px}.hero-visual{display:none}.hero-grid{display:block}.organizations{margin-top:20px}.js [data-reveal]{opacity:1;transform:none}.experience,.contact-panel{background:#f4f4f4;color:#111;print-color-adjust:exact}.experience *,.contact-panel *{color:#111!important}.experience-intro{position:static}.experience-grid{gap:30px}.experience-decoration,.contact-flower{display:none}.contact-panel{padding:25px;gap:30px}.contact-details{padding-top:0}.about-grid{gap:30px}.global-highlight{padding:25px 0}.expertise-card,.education-card,.timeline-item{break-inside:avoid}.expertise-card.featured{background:#fff;color:#111}.featured p,.featured .card-tag{color:#444}.contact-section{padding-bottom:20px}.footer-inner{padding-top:15px}
