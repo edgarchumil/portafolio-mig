@@ -1,0 +1,4 @@
+# Sitio estático: publicar los archivos de la raíz sin compilación.
+[build]
+  publish = "."
+  command = ""

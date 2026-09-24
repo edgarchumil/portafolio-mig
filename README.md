@@ -17,6 +17,21 @@ La sección de participación internacional incluye tres fotografías en `assets
 
 El sitio incluye todos sus recursos y puede abrirse sin conexión. Para utilizar correo, teléfono o WhatsApp se necesita la aplicación o conexión correspondiente.
 
+## Publicar en Netlify desde GitHub
+
+En Netlify, selecciona **Add new project → Import an existing project → GitHub** y el repositorio `edgarchumil/portafolio-mig`.
+
+- Rama: `main`.
+- Directorio base: vacío (raíz del repositorio).
+- Comando de compilación: vacío.
+- Directorio de publicación: `.`.
+
+El archivo `netlify.toml` ya establece la publicación desde la raíz sin compilación. Selecciona **Deploy site** para iniciar la publicación. Después de conectar el repositorio, Netlify actualizará el sitio con los nuevos cambios enviados a `main`.
+
+No se necesitan archivos ZIP ni subir carpetas manualmente.
+
+Guía oficial: https://docs.netlify.com/manage/projects/add-new-project/#import-from-an-existing-repository
+
 ## Personalización
 
 Cambia textos y datos de contacto en `index.html`, los colores y estilos en `css/styles.css`, y las interacciones en `js/main.js`. Conserva las rutas relativas de los recursos.
