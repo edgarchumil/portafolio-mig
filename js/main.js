@@ -312,6 +312,81 @@
       });
     }
 
+    // La galería conserva los enlaces a las fotos cuando no hay diálogo nativo.
+    const galleryDialog = $('#panel-gallery-dialog');
+    const galleryImage = galleryDialog && $('#gallery-image', galleryDialog);
+    const galleryCaption = galleryDialog && $('#gallery-caption', galleryDialog);
+    const galleryCounter = galleryDialog && $('#gallery-counter', galleryDialog);
+    const galleryItems = $$('a[data-gallery-item][href]').filter((item) => (
+      item.getAttribute('href') && $('img', item)
+    ));
+
+    if (galleryDialog && galleryImage && galleryCaption && galleryCounter && galleryItems.length
+      && typeof galleryDialog.showModal === 'function' && !galleryDialog.dataset.galleryInitialized) {
+      galleryDialog.dataset.galleryInitialized = 'true';
+      let galleryIndex = 0;
+      let galleryTrigger;
+
+      const showGalleryImage = (index) => {
+        galleryIndex = (index + galleryItems.length) % galleryItems.length;
+        const item = galleryItems[galleryIndex];
+        const thumbnail = $('img', item);
+        galleryImage.alt = thumbnail.alt;
+        galleryImage.src = item.getAttribute('href');
+        galleryCaption.textContent = item.dataset.caption || thumbnail.alt;
+        galleryCounter.textContent = `Fotografía ${galleryIndex + 1} de ${galleryItems.length}`;
+      };
+
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', (event) => {
+          if (event.defaultPrevented || event.button !== 0
+            || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+          galleryTrigger = item;
+          showGalleryImage(index);
+          if (!galleryDialog.open) galleryDialog.showModal();
+          event.preventDefault();
+          root.classList.add('gallery-open');
+          setMenu(false);
+        });
+      });
+
+      const closeGallery = () => {
+        if (galleryDialog.open) galleryDialog.close();
+      };
+      $$('[data-gallery-close]', galleryDialog).forEach((button) => {
+        button.addEventListener('click', closeGallery);
+      });
+      $$('[data-gallery-prev]', galleryDialog).forEach((button) => {
+        button.addEventListener('click', () => {
+          if (galleryDialog.open) showGalleryImage(galleryIndex - 1);
+        });
+      });
+      $$('[data-gallery-next]', galleryDialog).forEach((button) => {
+        button.addEventListener('click', () => {
+          if (galleryDialog.open) showGalleryImage(galleryIndex + 1);
+        });
+      });
+      galleryDialog.addEventListener('keydown', (event) => {
+        if (!galleryDialog.open || event.defaultPrevented
+          || event.altKey || event.ctrlKey || event.metaKey) return;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault();
+          showGalleryImage(galleryIndex + (event.key === 'ArrowLeft' ? -1 : 1));
+        }
+      });
+      galleryDialog.addEventListener('click', (event) => {
+        if (event.target !== galleryDialog) return;
+        const bounds = galleryDialog.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right
+          || event.clientY < bounds.top || event.clientY > bounds.bottom) closeGallery();
+      });
+      galleryDialog.addEventListener('close', () => {
+        if (galleryDialog.open) return;
+        root.classList.remove('gallery-open');
+        if (galleryTrigger?.isConnected) galleryTrigger.focus({ preventScroll: true });
+      });
+    }
+
     const portrait = $('.portrait-composition');
     const resetPortrait = () => {
       if (!portrait) return;

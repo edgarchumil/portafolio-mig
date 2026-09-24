@@ -13,6 +13,8 @@ Haz doble clic en `index.html`. Mantén las carpetas `css`, `js` y `assets` junt
 - `js/main.js`: pantalla de carga, menú, animaciones, trayectoria desplegable y contacto.
 - `assets/`: fotografía, fuentes locales, licencias y CV descargable.
 
+La sección de participación internacional incluye tres fotografías en `assets/images/panel/`, con animaciones de entrada y una galería ampliada. Se puede recorrer con los botones o las flechas del teclado y cerrar con Escape. Las imágenes mantienen su formato original y las animaciones respetan la preferencia de movimiento reducido.
+
 El sitio incluye todos sus recursos y puede abrirse sin conexión. Para utilizar correo, teléfono o visitar el blog se necesita la aplicación o conexión correspondiente.
 
 ## Personalización
